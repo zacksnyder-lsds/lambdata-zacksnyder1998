@@ -45,7 +45,30 @@ def train_validation_test_split(self, df, features, target,
     return X_train, X_val, X_test, y_train, y_val, y_test
 
 
+def list2column(list, df, colname):
+    '''
+    Enter your list, dataframe and column name 
+    function takes the list and turns it into a column in the entered dataframe 
+    '''
+    series = pd.Series(list)
+    df[colname] = series
+
+
+def datecreate(df, col):
+    df[col] = pd.to_datetime(df[col], infer_datetime_format=True)
+    year = []
+    [year.append(yr) for yr in df[col].Year]
+    df[year] = year
+    month = []
+    [month.append(mon) for mon in df[col].Month]
+    df[month] = month
+    day = []
+    [day.append(dy) for dy in df[col].Day]
+    df[day] = day
+
 if __name__ == '__main__':
+    #simple test of enlarge function
     # print(enlarge(5))
     
+
     breakpoint()
