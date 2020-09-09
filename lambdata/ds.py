@@ -66,6 +66,17 @@ def datecreate(df, col):
     [day.append(dy) for dy in df[col].Day]
     df[day] = day
 
+def abb_to_state(my_df):
+    '''
+    Takes in a dataframe with state codes and expands them to full state names
+    '''
+    new_df = my_df.copy
+    names_map = {'AL':'Alabama', 'AK':'Alaska', 'AZ':'Arizona', 'AR': 'Arkansas',
+    'CA':'California', 'CO':'Colorado'}
+    new_df['State'] = new_df['state_code'].map(names_map)
+    return new_df
+
+
 if __name__ == '__main__':
     #simple test of enlarge function
     # print(enlarge(5))
